@@ -10,18 +10,35 @@ public class ArithmeticExpression {
     }
 
     private String toExpressionString(BinaryTree.Node<String> node) {
-        // TODO: If node is a leaf, return its element.
-        if (node.left == null && node.right == null) {
-            return node.element;
+    private String toExpressionString(BinaryTree.Node<String> node) {
+    String result;
+    if (node == null) {
+        result = "";
+    }
+    else if (node.getLeft() == null && node.getRight() == null) {
+        result = node.getElement();
+    }
+    else {
+        String left = toExpressionString(node.getLeft());
+        String right = toExpressionString(node.getRight());
+        result = "(" + left + " " + node.getElement() + " " + right + ")";
+    }
+    return result;
+}
+        String result;
+        if (node == null) {
+            result = "";
         }
-        // TODO: Otherwise, recursively build the left and right expressions.
-        String left = toExpressionString(node.left);
-        String right = toExpressionString(node.right);
-
-        return "(" + left + " " + node.element + " " + right + ")";
-
-        // Return them as: "(" + left + " " + operator + " " + right + ")"
-        ; // Replace this line.
+        else if (node.getLeft() == null && node.getRight() == null) {
+            result = node.getElement();
+        }
+        else {
+            String left = toExpressionString(node.getLeft());
+            String right = toExpressionString(node.getRight());
+            result =  "(" + left + " " + node.getElement() + " " + right + ")";
+        }
+        return result;
+>>>>>>> 9209d5b244c2c3825227d930658aa988d454c48e
     }
 
     public static void main(String[] args) {
