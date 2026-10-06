@@ -10,10 +10,19 @@ public class ArithmeticExpression {
     }
 
     private String toExpressionString(BinaryTree.Node<String> node) {
-        // TODO: If node is a leaf, return its element.
-        // TODO: Otherwise, recursively build the left and right expressions.
-        // Return them as: "(" + left + " " + operator + " " + right + ")"
-        return ""; // Replace this line.
+        String result;
+        if (node == null) {
+            result = "";
+        }
+        else if (node.getLeft() == null && node.getRight() == null) {
+            result = node.getElement();
+        }
+        else {
+            String left = toExpressionString(node.getLeft());
+            String right = toExpressionString(node.getRight());
+            result =  "(" + left + " " + node.getElement() + " " + right + ")";
+        }
+        return result;
     }
 
     public static void main(String[] args) {
